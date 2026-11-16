@@ -138,7 +138,7 @@ export default function WebApp() {
             {tab === "home" && feedState === "ready" && <div className="feature-grid">
               {filtered.map((item, index) => <article className="drama-card" key={item.id}>
                 <div className={`poster poster-${index % 4}`}>
-                  {item.cover && <img src={item.cover} alt={item.title} loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />}
+                  {item.cover && <img src={`/api/cover?url=${encodeURIComponent(item.cover)}`} alt={item.title} loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />}
                   <span>{item.tags[0] || "短劇"}</span><strong>{String(item.id).padStart(2, "0")}</strong>
                 </div>
                 <div className="card-copy"><h3>{item.title}</h3><p>{item.episode_count || item.total_episodes || "集數未提供"} 集{item.is_finished ? " · 已完結" : ""}</p><span className="demo-label">HGhub CONTENT</span></div>
